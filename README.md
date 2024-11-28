@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# 냉장고를 털어라 ! | 본격 파밍 시뮬레이션 게임
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 📝 개요
 
-## Available Scripts
+- 이 게임에서 게임자는 두 개의 옵션을 선택해가며 미션을 수행한다. 게이머는 냉장고털이범의 역할을 맡아
+  냉장고를 털어 음식을 완성해야 하는 임무를 수행해야한다. 미션들은 줄거리의 주된 흐름에 따라가게 된다.
 
-In the project directory, you can run:
+### ✅ 목표
 
-### `npm start`
+- 남의 물건을 훔치는 행위는 분명 죄악이지만, 사람들 안에는 남을 속이고 자신의 이익을 취하려는 보편적인
+  심리가 있다. 미션을 수행 중에는 긴장감을, 성공 시에는 만족감과 안도감을 느끼게 한다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### ⏰ 작업계획표
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| 날짜     | 내용                                                           |
+| -------- | -------------------------------------------------------------- |
+| 24.11.28 | 기획 (제공 정보 범위 설정, 페이지 구성, 기능 구성) & 기능 Test |
+| 24.11.29 | 디자인 기획 & 와이어프레임 & 조건문 설정                       |
+| 24.11.30 | UI 구성                                                        |
+| 24.12.02 | 반응형                                                         |
+| 24.12.03 | 배포                                                           |
