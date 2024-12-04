@@ -3,6 +3,7 @@ import Main from "./pages/Main";
 import Desc from "./pages/Desc";
 import Options from "./pages/Options";
 import Success from "./pages/Success";
+import Failure from "./pages/Failure";
 
 const Router = () => {
   return (
@@ -12,6 +13,7 @@ const Router = () => {
         <Route path="/desc" element={<Desc />}></Route>
         <Route path="/options" element={<Options />}></Route>
         <Route path="/success" element={<Success />}></Route>
+        <Route path="/failure" element={<Failure />}></Route>
       </Routes>
     </HashRouter>
   );

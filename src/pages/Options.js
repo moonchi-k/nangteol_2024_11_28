@@ -1,21 +1,56 @@
 import { Box, Text } from "@chakra-ui/react";
 import BgImg from "../components/bgImg.png";
 import { questions } from "../components/questions";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Options = () => {
+  const navigate = useNavigate();
+
   const [question, setQuestions] = useState(questions);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const navigate = useNavigate();
   const currentQuestion = question[currentQuestionIndex];
+  const selectedAnswers = useRef();
+
   const questionContent = currentQuestion.q;
   const firstAnswerContent = currentQuestion.a[0].text;
   const secondAnswerContent = currentQuestion.a[1].text;
 
-  const clickHandler = () => {
+  // console.log(question[0].a[0]);
+
+  const FirstclickHandler = (answerIndex) => {
+    // console.log(currentQuestion);
+
+    if (!currentQuestion.a || !currentQuestion.a[answerIndex]) {
+    }
+    const selectedAnswer = currentQuestion.a[answerIndex].text;
+    // console.log(selectedAnswer);
+    // console.log(answerIndex);
+    // console.log(currentQuestionIndex);
+    selectedAnswers.current = selectedAnswer;
+    // console.log(selectedAnswers);
+
+    // const selectedAnswer = currentQuestion.a[answerIndex];
+    if (currentQuestionIndex === 1) {
+      console.log(selectedAnswer);
+      if (selectedAnswer.includes("주민")) {
+        navigate("/failure");
+      } else {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      }
+    } else if (currentQuestionIndex === 0) {
+      if (selectedAnswer.includes("계단")) {
+        setCurrentQuestionIndex(currentQuestionIndex + 2);
+      } else {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      }
+    }
+  };
+
+  const SecondclickHandler = () => {
     if (currentQuestionIndex < question.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      console.log(currentQuestionIndex);
     } else {
       navigate("/success");
     }
@@ -35,7 +70,12 @@ const Options = () => {
       flexDirection={"column"}
       alignItems={"center"}
     >
-      <Text marginTop={"90px"} fontSize={"36px"}>
+      <Text
+        marginTop={"70px"}
+        fontSize={"34px"}
+        as={"h5"}
+        letterSpacing={"-6px"}
+      >
         {questionContent}
       </Text>
       <Box
@@ -49,7 +89,7 @@ const Options = () => {
         p={"5px"}
       >
         <Box
-          onClick={clickHandler}
+          onClick={() => FirstclickHandler(0)}
           w={"265px"}
           h={"63px"}
           border={"2px solid black"}
@@ -74,7 +114,7 @@ const Options = () => {
         p={"5px"}
       >
         <Box
-          onClick={clickHandler}
+          onClick={() => FirstclickHandler(1)}
           w={"265px"}
           h={"63px"}
           border={"2px solid black"}

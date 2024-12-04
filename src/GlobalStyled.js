@@ -10,5 +10,14 @@ export const GlobalStyled = createGlobalStyle`
 
 body {
     font-family: 'Noto Sans', sans-serif, ;
+    h4 {
+        font-family:"Cafe24Moyamoya-Regular-v1.0"
+    }
+    
+    h5 {
+        font-family: 
+        'NeoDunggeunmoPro-Regular'
+        ;
+        }
 }
 `;

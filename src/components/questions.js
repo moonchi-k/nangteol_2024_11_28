@@ -12,6 +12,18 @@ export const questions = [
   },
 
   {
+    q: ["앗! 이웃을 만났다."],
+    a: [
+      {
+        text: "주민인 척 인사한다.",
+      },
+      {
+        text: "가만히 있는다.",
+      },
+    ],
+  },
+
+  {
     q: ["무사히 도착했다. 다음은?"],
     a: [
       {
@@ -28,6 +40,7 @@ export const questions = [
     a: [
       {
         text: "도구를 써야지. 후레쉬를 킨다.",
+        // 죽음
       },
       {
         text: "오감을 믿어. 그대로 간다.",
@@ -61,6 +74,7 @@ export const questions = [
     a: [
       {
         text: "벽을 탄다.",
+        // 죽음
       },
       {
         text: "계단으로 간다.",
@@ -72,6 +86,7 @@ export const questions = [
     a: [
       {
         text: "여기서 더 찾아본다.",
+        // 죽음
       },
       {
         text: "202호로 간다.",
@@ -83,6 +98,7 @@ export const questions = [
     a: [
       {
         text: "여기서 더 찾아본다.",
+        // 죽음
       },
       {
         text: "402호로 간다.",
