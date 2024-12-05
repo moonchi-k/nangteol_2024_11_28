@@ -4,19 +4,31 @@ import LdImg from "../components/LdImg.png";
 import "./Success.css";
 import { useEffect, useState } from "react";
 import complete from "../components/success.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Success = () => {
   const [showCompleted, setShowCompleted] = useState(false);
+  const navigate = useNavigate();
+  const savedIndex = JSON.parse(localStorage.getItem("index"));
+
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
+    savedIndex || 0
+  );
 
   // 5초 뒤에 상태를 변경하여 화면을 새로 렌더링
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowCompleted(true); // 5초 후에 완료 화면으로 전환
-    }, 5000);
+    }, 2000);
 
     // 컴포넌트가 unmount 될 때 타이머를 정리
     return () => clearTimeout(timer);
   }, []);
+
+  const startNewGame = () => {
+    localStorage.removeItem("index"); // 로컬스토리지에서 "index" 항목 삭제
+    setCurrentQuestionIndex(0); // 상태를 0으로 초기화하여 게임을 처음부터 시작
+    navigate("/options"); // 게임 첫 페이지로 이동
+  };
 
   return (
     <>
@@ -69,16 +81,16 @@ const Success = () => {
               <Text fontSize={"14px"}> 오늘은 배불리 자야지~ </Text>
             </Box>
           </Box>
-          <Link to={"/"}>
-            <Text
-              as={"h4"}
-              fontSize={"20px"}
-              fontFamily={""}
-              marginTop={"15px"}
-            >
-              다시하기
-            </Text>
-          </Link>
+
+          <Text
+            onClick={startNewGame}
+            as={"h4"}
+            fontSize={"20px"}
+            fontFamily={""}
+            marginTop={"15px"}
+          >
+            다시하기
+          </Text>
         </Box>
       ) : (
         <Box
@@ -117,7 +129,7 @@ const Success = () => {
               fontSize={"30px"}
               fontWeight={"500"}
             >
-              요리중
+              다 찾았다!
               <Box
                 marginTop={"20px"}
                 display={"flex"}

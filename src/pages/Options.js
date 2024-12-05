@@ -1,40 +1,52 @@
 import { Box, Text } from "@chakra-ui/react";
 import BgImg from "../components/bgImg.png";
 import { questions } from "../components/questions";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Options = () => {
   const navigate = useNavigate();
 
-  const [question, setQuestions] = useState(questions);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const currentQuestion = question[currentQuestionIndex];
-  const selectedAnswers = useRef();
+  const savedIndex = JSON.parse(localStorage.getItem("index")) || 0;
+
+  // 상태 관리. 초기값은 0 (savedIndex가 0이면 로컬스토리지 값이 없거나 초기화된 경우)
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
+    savedIndex || 0
+  );
+
+  // 페이지가 로드될 때마다 currentQuestionIndex를 로컬스토리지에 저장
+  useEffect(() => {
+    // 로컬스토리지에서 가져온 값이 없으면 기본값 0으로 설정
+    // savedIndex 값이 초기값이 아닌 경우에만 상태 업데이트
+    if (savedIndex === null || savedIndex === undefined) {
+      localStorage.setItem("index", JSON.stringify(0));
+      setCurrentQuestionIndex(0); // 새로고침 후 초기화
+    } else {
+      setCurrentQuestionIndex(savedIndex); // 로컬스토리지 값이 있으면 그 값을 사용
+    }
+  }, []); // 페이지가 처음 렌더링될 때만 실행
+  useEffect(() => {
+    // currentQuestionIndex 상태가 변경될 때마다 로컬스토리지에 저장
+    localStorage.setItem("index", JSON.stringify(currentQuestionIndex));
+  }, [currentQuestionIndex]);
+  const currentQuestion = questions[currentQuestionIndex];
+  const selectedAnswers = useRef(null); // 답변을 저장할 ref
 
   const questionContent = currentQuestion.q;
   const firstAnswerContent = currentQuestion.a[0].text;
   const secondAnswerContent = currentQuestion.a[1].text;
 
-  // console.log(question[0].a[0]);
-
   const FirstclickHandler = (answerIndex) => {
-    // console.log(currentQuestion);
-
     if (!currentQuestion.a || !currentQuestion.a[answerIndex]) {
     }
     const selectedAnswer = currentQuestion.a[answerIndex].text;
-    // console.log(selectedAnswer);
-    // console.log(answerIndex);
-    // console.log(currentQuestionIndex);
-    selectedAnswers.current = selectedAnswer;
-    // console.log(selectedAnswers);
+    console.log(selectedAnswer);
 
-    // const selectedAnswer = currentQuestion.a[answerIndex];
+    selectedAnswers.current = selectedAnswer;
     if (currentQuestionIndex === 1) {
       console.log(selectedAnswer);
       if (selectedAnswer.includes("주민")) {
-        navigate("/failure");
+        navigate("/failure", { state: { index: currentQuestionIndex } });
       } else {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
       }
@@ -44,15 +56,68 @@ const Options = () => {
       } else {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
       }
-    }
-  };
+    } else if (currentQuestionIndex === 2) {
+      if (selectedAnswer.includes("쇼파")) {
+        navigate("/failure", { state: { index: currentQuestionIndex } });
+      } else {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      }
+    } else if (currentQuestionIndex === 3) {
+      if (selectedAnswer.includes("오감")) {
+        navigate("/failure", { state: { index: currentQuestionIndex } });
+      } else {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      }
+    } else if (currentQuestionIndex === 4) {
+      if (selectedAnswer.includes("여기")) {
+        navigate("/failure", { state: { index: currentQuestionIndex } });
+      } else {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      }
+    } else if (currentQuestionIndex === 5) {
+      // console.log("hello");
+      // navigate("/alert", {
+      //   state: {
+      //     selectedAnswer: selectedAnswer,
+      //     currentQuestionIndex: currentQuestionIndex,
+      //   },
+      // });
 
-  const SecondclickHandler = () => {
-    if (currentQuestionIndex < question.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      console.log(currentQuestionIndex);
-    } else {
-      navigate("/success");
+      if (selectedAnswer.includes("402호")) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        navigate("/alert", {
+          state: {
+            selectedAnswer: selectedAnswer,
+            currentQuestionIndex: currentQuestionIndex,
+          },
+        });
+      } else {
+        setCurrentQuestionIndex(currentQuestionIndex + 2);
+        navigate("/alert", {
+          state: {
+            selectedAnswer: selectedAnswer,
+            currentQuestionIndex: currentQuestionIndex,
+          },
+        });
+      }
+    } else if (currentQuestionIndex === 6) {
+      if (selectedAnswer.includes("여기")) {
+        navigate("/failure", { state: { index: currentQuestionIndex } });
+      } else {
+        setCurrentQuestionIndex(currentQuestionIndex + 2);
+      }
+    } else if (currentQuestionIndex === 7) {
+      if (selectedAnswer.includes("여기")) {
+        navigate("/failure", { state: { index: currentQuestionIndex } });
+      } else {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      }
+    } else if (currentQuestionIndex === 8) {
+      if (selectedAnswer.includes("벽")) {
+        navigate("/failure", { state: { index: currentQuestionIndex } });
+      } else {
+        navigate("/success");
+      }
     }
   };
 
